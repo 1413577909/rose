@@ -26,39 +26,30 @@
         height: 100vh;
         margin: 0;
         background: rgb(255, 192, 203);
-        position: relative; /* 使 watermark 定位相对于 body */
+        font-family: "楷体", KaiTi, serif; /* 全局设楷体（可选） */
       }
 
       .container {
-        color: white;
         text-align: center;
         width: 500px;
-        height: 600px;
-        position: relative;
-        z-index: 2; /* 确保 canvas 在 watermark 上层 */
+        height: auto; /* 改为 auto 以容纳文字 */
+        padding-bottom: 30px; /* 底部留空给文字 */
       }
 
-      /* 新增：背景水印文字 */
-      .watermark {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(-30deg);
-        font-size: 10rem;
+      /* 新增：玫瑰花下方的文字样式 */
+      .rose-caption {
+        font-size: 2.2rem;
         font-weight: bold;
-        color: rgba(0, 0, 0, 0.30); /* 半透明白色，柔和不抢眼 */
-        pointer-events: none; /* 不可点击，不影响交互 */
-        user-select: none; /* 禁止选中 */
-        z-index: 1; /* 在 canvas 下方 */
-        white-space: nowrap;
+        color: #000; /* 黑色 */
+        margin-top: 20px; /* 与 canvas 保持间距 */
+        font-family: "楷体", KaiTi, serif;
+        text-shadow: none; /* 确保无阴影 */
+        line-height: 1.4;
       }
     </style>
   </head>
 
   <body>
-    <!-- 背景水印文字 -->
-    <div class="watermark">测试</div>
-
     <div class="container">
       <canvas id="c"></canvas>
       <script>
@@ -137,6 +128,9 @@
           0
         );
       </script>
+
+      <!-- 新增：玫瑰花下方的黑色楷体文字 -->
+      <div class="rose-caption">落俗不可避免 浪漫至死不渝</div>
     </div>
   </body>
 </html>
