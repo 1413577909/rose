@@ -26,6 +26,7 @@
         height: 100vh;
         margin: 0;
         background: rgb(255, 192, 203);
+        position: relative; /* 使 watermark 定位相对于 body */
       }
 
       .container {
@@ -33,11 +34,31 @@
         text-align: center;
         width: 500px;
         height: 600px;
+        position: relative;
+        z-index: 2; /* 确保 canvas 在 watermark 上层 */
+      }
+
+      /* 新增：背景水印文字 */
+      .watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-30deg);
+        font-size: 10rem;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.15); /* 半透明白色，柔和不抢眼 */
+        pointer-events: none; /* 不可点击，不影响交互 */
+        user-select: none; /* 禁止选中 */
+        z-index: 1; /* 在 canvas 下方 */
+        white-space: nowrap;
       }
     </style>
   </head>
 
   <body>
+    <!-- 背景水印文字 -->
+    <div class="watermark">测试</div>
+
     <div class="container">
       <canvas id="c"></canvas>
       <script>
